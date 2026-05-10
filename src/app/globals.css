@@ -24,9 +24,34 @@ body {
     background-size: 200% 200%;
     animation: holographic 4s linear infinite;
   }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 @keyframes holographic {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
 }
+
+@keyframes flow-dash {
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes path-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes path-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.direction-path-dash {
+  animation: flow-dash 0.5s linear infinite;
+}
+

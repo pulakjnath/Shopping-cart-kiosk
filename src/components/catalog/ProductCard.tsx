@@ -16,7 +16,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <img 
           src={product.imageUrl} 
           alt={product.name}
-          className="w-full h-full object-cover mix-blend-multiply"
+          className="w-full h-full object-cover"
         />
         {quantity > 0 && (
           <div className="absolute top-2 right-2 bg-[#1b5e20] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
@@ -30,12 +30,12 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-gray-500 text-sm mb-4">{product.weight}</p>
         
         <div className="flex items-center justify-between">
-          <span className="font-bold text-xl text-gray-900">${product.price.toFixed(2)}</span>
+          <span className="font-bold text-xl text-gray-900">₹{product.price.toFixed(2)}</span>
           
           {quantity === 0 ? (
             <button 
               onClick={() => updateCartItem(product, 1)}
-              className="bg-[#f0f9f0] hover:bg-[#e8f5e9] text-[#1b5e20] w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+              className="bg-[#f0f9f0] hover:bg-[#e8f5e9] text-[#1b5e20] w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
             >
               <Plus size={20} />
             </button>

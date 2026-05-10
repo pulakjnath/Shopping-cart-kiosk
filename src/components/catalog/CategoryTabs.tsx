@@ -1,6 +1,8 @@
 "use client";
 
-const categories = ["All", "Produce", "Dairy", "Bakery", "Meat"];
+import { mockProducts } from "@/lib/mockData";
+
+const categories = ["All", ...Array.from(new Set(mockProducts.map(p => p.category)))];
 
 interface CategoryTabsProps {
   activeCategory: string;
@@ -16,11 +18,10 @@ export default function CategoryTabs({ activeCategory, onSelect }: CategoryTabsP
           <button
             key={category}
             onClick={() => onSelect(category)}
-            className={`px-5 py-2.5 rounded-full font-semibold text-sm whitespace-nowrap transition-all ${
-              isActive 
-                ? "bg-[#1b5e20] text-white shadow-md" 
-                : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
-            }`}
+            className={`px-5 py-2.5 rounded-full font-semibold text-sm whitespace-nowrap transition-all ${isActive
+              ? "bg-[#1b5e20] text-white shadow-md"
+              : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
+              }`}
           >
             {category}
           </button>

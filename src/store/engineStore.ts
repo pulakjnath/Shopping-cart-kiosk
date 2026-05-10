@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+import { aisles } from '@/lib/mockData';
 import { Product } from '@/lib/mockData';
 
-export type KioskState = 'IDLE' | 'NAVIGATING' | 'VERIFICATION' | 'GUARD_PASS';
+export type KioskState = 'LANDING' | 'IDLE' | 'NAVIGATING' | 'VERIFICATION' | 'GUARD_PASS' | 'CASH_CHECKOUT';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -15,10 +16,20 @@ interface EngineState {
   alerts: string[];
   lastAddedProduct: Product | null;
   recommendationsDismissed: boolean;
+  activeCategory: string;
+
+  // Navigation direction state
+  navigatingTo: string | null;
+  navigationOrigin: { x: number; y: number } | null;
+  isPathVisible: boolean;
 
   // Actions
+  startShopping: () => void;
   setKioskState: (state: KioskState) => void;
+  setActiveCategory: (category: string) => void;
   moveToAisle: (aisleId: string) => void;
+  navigateTo: (aisleId: string) => void;
+  clearNavigation: () => void;
   updateCartItem: (product: Product, quantityDelta: number) => void;
   triggerAlert: (message: string) => void;
   clearAlerts: () => void;
@@ -27,18 +38,49 @@ interface EngineState {
 }
 
 export const useEngineStore = create<EngineState>((set, get) => ({
-  kioskState: 'IDLE',
+  kioskState: 'LANDING',
   currentAisle: 'entrance',
   cart: [],
   cartTotal: 0,
   alerts: [],
   lastAddedProduct: null,
   recommendationsDismissed: false,
-  
+  activeCategory: 'All',
+
+  // Navigation direction state
+  navigatingTo: null,
+  navigationOrigin: null,
+  isPathVisible: false,
+
+  startShopping: () => set({ kioskState: 'IDLE' }),
   setKioskState: (state) => set({ kioskState: state }),
-  
+  setActiveCategory: (category) => set({ activeCategory: category }),
+
   moveToAisle: (aisleId) => set({ currentAisle: aisleId, kioskState: 'NAVIGATING' }),
-  
+
+  navigateTo: (aisleId) => {
+    const { currentAisle, navigatingTo } = get();
+    // No-op if already navigating to same aisle
+    if (navigatingTo === aisleId) return;
+    const target = aisles.find(a => a.id === aisleId);
+    // Snapshot current cart position as origin
+    const originAisle = aisles.find(a => a.id === currentAisle);
+    const origin = originAisle?.svgCoordinates ?? null;
+    set({
+      navigatingTo: aisleId,
+      navigationOrigin: origin,
+      isPathVisible: true,
+      currentAisle: aisleId,
+      kioskState: 'NAVIGATING',
+    });
+  },
+
+  clearNavigation: () => set({
+    navigatingTo: null,
+    navigationOrigin: null,
+    isPathVisible: false,
+  }),
+
   updateCartItem: (product, quantityDelta) => {
     const { cart } = get();
     const existingItem = cart.find(item => item.id === product.id);
@@ -62,25 +104,29 @@ export const useEngineStore = create<EngineState>((set, get) => ({
       cart: newCart,
       cartTotal: newTotal,
       currentAisle: product.aisleId,
-      kioskState: 'NAVIGATING',
+      kioskState: get().kioskState === 'CASH_CHECKOUT' ? 'CASH_CHECKOUT' : 'NAVIGATING',
       // Only update recs when genuinely new product added
       ...(isNewItem && { lastAddedProduct: product, recommendationsDismissed: false }),
     });
   },
 
   dismissRecommendations: () => set({ recommendationsDismissed: true }),
-  
+
   triggerAlert: (message) => set((state) => ({ alerts: [...state.alerts, message] })),
-  
+
   clearAlerts: () => set({ alerts: [] }),
-  
+
   resetEngine: () => set({
-    kioskState: 'IDLE',
+    kioskState: 'LANDING',
     currentAisle: 'entrance',
     cart: [],
     cartTotal: 0,
     alerts: [],
     lastAddedProduct: null,
     recommendationsDismissed: false,
+    activeCategory: 'All',
+    navigatingTo: null,
+    navigationOrigin: null,
+    isPathVisible: false,
   })
 }));

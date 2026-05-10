@@ -37,7 +37,7 @@ function MiniCard({ product }: { product: Product }) {
       </div>
       <div className="flex items-center justify-between">
         <span className="text-sm font-bold text-gray-900">
-          ${product.price.toFixed(2)}
+          ₹{product.price.toFixed(2)}
         </span>
         {qty === 0 ? (
           <button
@@ -101,12 +101,12 @@ function AltRow({
             {isCheaper ? (
               <>
                 <TrendingDown size={11} />
-                Save ${diff}
+                Save ₹{diff}
               </>
             ) : (
               <>
                 <TrendingUp size={11} />
-                +${diff} premium
+                +₹{diff} premium
               </>
             )}
           </span>
@@ -116,7 +116,7 @@ function AltRow({
       {/* Price + add */}
       <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
         <span className="text-sm font-bold text-gray-900">
-          ${product.price.toFixed(2)}
+          ₹{product.price.toFixed(2)}
         </span>
         {qty === 0 ? (
           <button
@@ -172,7 +172,7 @@ export default function RecommendationPanel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ type: "spring", stiffness: 300, damping: 28 }}
-          className="mt-6 rounded-3xl border border-gray-100 bg-[#f8fbf8] shadow-sm overflow-hidden"
+          className="rounded-3xl border border-gray-100 bg-[#f8fbf8] shadow-sm overflow-hidden"
         >
           {/* ── Header ── */}
           <div className="flex items-center justify-between px-5 py-4 bg-white border-b border-gray-100">
@@ -180,7 +180,7 @@ export default function RecommendationPanel() {
               <CheckCircle2 size={20} className="text-[#1b5e20]" />
               <div>
                 <p className="text-sm font-bold text-gray-900">
-                  &ldquo;{lastAdded?.name}&rdquo; added to cart
+                  "{lastAdded?.name}" added to cart
                 </p>
                 <p className="text-xs text-gray-400">
                   You might also like these picks

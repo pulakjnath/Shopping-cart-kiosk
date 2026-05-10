@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CreditCard, Smartphone, Globe, X, Check, Loader2 } from "lucide-react";
+import { CreditCard, Smartphone, Globe, X, Check, Loader2, Banknote } from "lucide-react";
 import { useEngineStore } from "@/store/engineStore";
 
-type PaymentMethod = "card" | "apple" | "google" | null;
+type PaymentMethod = "card" | "apple" | "google" | "cash" | null;
 type Step = "select" | "processing" | "success";
 
 const paymentOptions = [
@@ -33,20 +33,43 @@ const paymentOptions = [
     color: "bg-green-50 border-green-200 hover:bg-green-100",
     iconColor: "text-green-600",
   },
+  {
+    id: "cash" as PaymentMethod,
+    label: "Cash at Counter",
+    sub: "Pay at checkout booth",
+    icon: Banknote,
+    color: "bg-amber-50 border-amber-200 hover:bg-amber-100",
+    iconColor: "text-amber-600",
+  },
 ];
 
 export default function PaymentTerminal() {
   const kioskState = useEngineStore((s) => s.kioskState);
   const cartTotal = useEngineStore((s) => s.cartTotal);
   const setKioskState = useEngineStore((s) => s.setKioskState);
+  const navigateTo = useEngineStore((s) => s.navigateTo);
   const resetEngine = useEngineStore((s) => s.resetEngine);
 
   const [step, setStep] = useState<Step>("select");
   const [selected, setSelected] = useState<PaymentMethod>(null);
 
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && step === 'select') handleCancel();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [step]);
+
   if (kioskState !== "VERIFICATION") return null;
 
   const handleSelect = (method: PaymentMethod) => {
+    if (method === "cash") {
+      navigateTo("checkout");
+      setKioskState("CASH_CHECKOUT");
+      return;
+    }
+
     setSelected(method);
     setStep("processing");
 
@@ -90,7 +113,7 @@ export default function PaymentTerminal() {
             <X size={22} />
           </button>
           <p className="text-white/70 text-sm font-medium mb-1 uppercase tracking-wider">Gromuse Checkout</p>
-          <p className="text-white text-5xl font-black">${cartTotal.toFixed(2)}</p>
+          <p className="text-white text-5xl font-black">₹{cartTotal.toFixed(2)}</p>
           <p className="text-white/60 text-sm mt-2">Select your payment method</p>
         </div>
 
