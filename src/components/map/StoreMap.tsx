@@ -14,6 +14,7 @@ export default function StoreMap({ className = "w-full h-full" }: { className?: 
   const isPathVisible = useEngineStore((state) => state.isPathVisible);
   const clearNavigation = useEngineStore((state) => state.clearNavigation);
   const navigateTo = useEngineStore((state) => state.navigateTo);
+  const setActiveCategory = useEngineStore((state) => state.setActiveCategory);
 
   const targetAisle = aisles.find((a) => a.id === currentAisleId) || aisles.find(a => a.id === 'entrance')!;
   const destAisle = aisles.find((a) => a.id === navigatingTo);
@@ -32,6 +33,7 @@ export default function StoreMap({ className = "w-full h-full" }: { className?: 
     const aisle = aisles.find(a => a.id === aisleId);
     if (aisle?.isNavigable) {
       navigateTo(aisleId);
+      setActiveCategory(aisle.name);
       setTimeout(() => {
         document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 3000);

@@ -7,8 +7,8 @@ export interface Product {
   imageUrl: string;
   aisleId: string;
   tags?: string[];
+  stock: number;
 }
-
 export interface Aisle {
   id: string;
   name: string;
@@ -202,81 +202,81 @@ export const aisles: Aisle[] = [
 
 export const mockProducts: Product[] = [
   // Produce
-  { id: 'p1',  name: 'Italian Avocado',     price: 6.50,  category: 'Produce', weight: '500 gm',  imageUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'] },
-  { id: 'p2',  name: 'Organic Bananas',     price: 2.99,  category: 'Produce', weight: '1 kg',    imageUrl: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'] },
-  { id: 'p7',  name: 'Cherry Tomatoes',     price: 3.79,  category: 'Produce', weight: '250 gm',  imageUrl: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['vegetable','fresh'] },
-  { id: 'p8',  name: 'Baby Spinach',        price: 2.49,  category: 'Produce', weight: '200 gm',  imageUrl: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['vegetable','leafy'] },
-  { id: 'p9',  name: 'Hass Avocado (3pk)',  price: 5.29,  category: 'Produce', weight: '3 pcs',   imageUrl: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'] },
-  { id: 'p10', name: 'Red Grapes',          price: 4.99,  category: 'Produce', weight: '500 gm',  imageUrl: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'] },
+  { id: 'p1',  name: 'Italian Avocado',     price: 6.50,  category: 'Produce', weight: '500 gm',  imageUrl: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'], stock: 15 },
+  { id: 'p2',  name: 'Organic Bananas',     price: 2.99,  category: 'Produce', weight: '1 kg',    imageUrl: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'], stock: 22 },
+  { id: 'p7',  name: 'Cherry Tomatoes',     price: 3.79,  category: 'Produce', weight: '250 gm',  imageUrl: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['vegetable','fresh'], stock: 8 },
+  { id: 'p8',  name: 'Baby Spinach',        price: 2.49,  category: 'Produce', weight: '200 gm',  imageUrl: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['vegetable','leafy'], stock: 4 },
+  { id: 'p9',  name: 'Hass Avocado (3pk)',  price: 5.29,  category: 'Produce', weight: '3 pcs',   imageUrl: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'], stock: 12 },
+  { id: 'p10', name: 'Red Grapes',          price: 4.99,  category: 'Produce', weight: '500 gm',  imageUrl: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-produce', tags: ['fruit','fresh'], stock: 9 },
 
   // Dairy
-  { id: 'p3',  name: 'Whole Milk',          price: 3.49,  category: 'Dairy',   weight: '1 Gallon', imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['milk','organic'] },
-  { id: 'p4',  name: 'Farm Fresh Eggs',     price: 5.99,  category: 'Dairy',   weight: '1 Dozen',  imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['eggs'] },
-  { id: 'p11', name: 'Greek Yogurt',        price: 4.29,  category: 'Dairy',   weight: '450 gm',   imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['yogurt','protein'] },
-  { id: 'p12', name: 'Cheddar Cheese Block',price: 6.99,  category: 'Dairy',   weight: '400 gm',   imageUrl: 'https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['cheese'] },
-  { id: 'p13', name: 'Skimmed Milk',        price: 2.79,  category: 'Dairy',   weight: '1 Gallon', imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['milk','low-fat'] },
+  { id: 'p3',  name: 'Whole Milk',          price: 3.49,  category: 'Dairy',   weight: '1 Gallon', imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['milk','organic'], stock: 20 },
+  { id: 'p4',  name: 'Farm Fresh Eggs',     price: 5.99,  category: 'Dairy',   weight: '1 Dozen',  imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['eggs'], stock: 14 },
+  { id: 'p11', name: 'Greek Yogurt',        price: 4.29,  category: 'Dairy',   weight: '450 gm',   imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['yogurt','protein'], stock: 11 },
+  { id: 'p12', name: 'Cheddar Cheese Block',price: 6.99,  category: 'Dairy',   weight: '400 gm',   imageUrl: 'https://images.unsplash.com/photo-1618164436241-4473940d1f5c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['cheese'], stock: 7 },
+  { id: 'p13', name: 'Skimmed Milk',        price: 2.79,  category: 'Dairy',   weight: '1 Gallon', imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-dairy', tags: ['milk','low-fat'], stock: 2 },
 
   // Bakery
-  { id: 'p5',  name: 'Artisan Bread',       price: 4.50,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','artisan'] },
-  { id: 'p14', name: 'Sourdough Loaf',      price: 5.99,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','sourdough'] },
-  { id: 'p15', name: 'Blueberry Muffins',   price: 3.49,  category: 'Bakery',  weight: '4 pcs',    imageUrl: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['muffin','sweet'] },
-  { id: 'p16', name: 'Croissants',          price: 2.99,  category: 'Bakery',  weight: '2 pcs',    imageUrl: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['pastry','french'] },
-  { id: 'p17', name: 'Whole Wheat Bread',   price: 3.29,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','healthy'] },
+  { id: 'p5',  name: 'Artisan Bread',       price: 4.50,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','artisan'], stock: 5 },
+  { id: 'p14', name: 'Sourdough Loaf',      price: 5.99,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','sourdough'], stock: 8 },
+  { id: 'p15', name: 'Blueberry Muffins',   price: 3.49,  category: 'Bakery',  weight: '4 pcs',    imageUrl: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['muffin','sweet'], stock: 10 },
+  { id: 'p16', name: 'Croissants',          price: 2.99,  category: 'Bakery',  weight: '2 pcs',    imageUrl: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['pastry','french'], stock: 12 },
+  { id: 'p17', name: 'Whole Wheat Bread',   price: 3.29,  category: 'Bakery',  weight: '1 Loaf',   imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bakery', tags: ['bread','healthy'], stock: 6 },
 
   // Meat
-  { id: 'p6',  name: 'Atlantic Salmon',     price: 12.99, category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['fish','seafood'] },
-  { id: 'p18', name: 'Chicken Breast',      price: 8.49,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1604503468506-a8da13d11d36?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['chicken','protein'] },
-  { id: 'p19', name: 'Ground Beef (Lean)',  price: 9.99,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['beef','protein'] },
-  { id: 'p20', name: 'Shrimp (Peeled)',     price: 14.99, category: 'Meat',    weight: '500 gm',   imageUrl: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['seafood','shellfish'] },
-  { id: 'p21', name: 'Pork Chops',         price: 7.29,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['pork','protein'] },
+  { id: 'p6',  name: 'Atlantic Salmon',     price: 12.99, category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['fish','seafood'], stock: 4 },
+  { id: 'p18', name: 'Chicken Breast',      price: 8.49,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1604503468506-a8da13d11d36?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['chicken','protein'], stock: 18 },
+  { id: 'p19', name: 'Ground Beef (Lean)',  price: 9.99,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['beef','protein'], stock: 15 },
+  { id: 'p20', name: 'Shrimp (Peeled)',     price: 14.99, category: 'Meat',    weight: '500 gm',   imageUrl: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['seafood','shellfish'], stock: 6 },
+  { id: 'p21', name: 'Pork Chops',         price: 7.29,  category: 'Meat',    weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-meat', tags: ['pork','protein'], stock: 10 },
 
   // Seafood
-  { id: 's1',  name: 'Jumbo Prawns',     price: 18.99, category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1510130113356-82b85a31afab?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['seafood','shellfish'] },
-  { id: 's2',  name: 'Tuna Steak',      price: 15.49,  category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['fish','seafood'] },
-  { id: 's3',  name: 'Lobster Tail',  price: 24.99,  category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['seafood','shellfish'] },
+  { id: 's1',  name: 'Jumbo Prawns',     price: 18.99, category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1510130113356-82b85a31afab?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['seafood','shellfish'], stock: 5 },
+  { id: 's2',  name: 'Tuna Steak',      price: 15.49,  category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['fish','seafood'], stock: 8 },
+  { id: 's3',  name: 'Lobster Tail',  price: 24.99,  category: 'Seafood', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-seafood', tags: ['seafood','shellfish'], stock: 3 },
 
   // Cheese
-  { id: 'c1',  name: 'Brie Wheel',     price: 8.99, category: 'Cheese', weight: '200 gm',     imageUrl: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'] },
-  { id: 'c2',  name: 'Gouda Block',      price: 7.49,  category: 'Cheese', weight: '250 gm',     imageUrl: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'] },
-  { id: 'c3',  name: 'Parmesan Wedge',  price: 9.99,  category: 'Cheese', weight: '200 gm',     imageUrl: 'https://images.unsplash.com/photo-1589881133825-bbb3b9471b1b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'] },
+  { id: 'c1',  name: 'Brie Wheel',     price: 8.99, category: 'Cheese', weight: '200 gm',     imageUrl: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'], stock: 12 },
+  { id: 'c2',  name: 'Gouda Block',      price: 7.49,  category: 'Cheese', weight: '250 gm',     imageUrl: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'], stock: 15 },
+  { id: 'c3',  name: 'Parmesan Wedge',  price: 9.99,  category: 'Cheese', weight: '200 gm',     imageUrl: 'https://images.unsplash.com/photo-1589881133825-bbb3b9471b1b?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-cheese', tags: ['cheese','dairy'], stock: 9 },
 
   // Wine
-  { id: 'w1',  name: 'Pinot Noir',     price: 19.99, category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'] },
-  { id: 'w2',  name: 'Chardonnay',      price: 16.49,  category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'] },
-  { id: 'w3',  name: 'Rosé Blend',  price: 14.99,  category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'] },
+  { id: 'w1',  name: 'Pinot Noir',     price: 19.99, category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'], stock: 20 },
+  { id: 'w2',  name: 'Chardonnay',      price: 16.49,  category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'], stock: 18 },
+  { id: 'w3',  name: 'Rosé Blend',  price: 14.99,  category: 'Wine', weight: '750 ml',     imageUrl: 'https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wine', tags: ['wine','alcohol'], stock: 14 },
 
   // Beer
-  { id: 'b1',  name: 'Craft IPA 6-Pack',     price: 12.99, category: 'Beer', weight: '6x12 oz',     imageUrl: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'] },
-  { id: 'b2',  name: 'Lager 12-Pack',      price: 15.49,  category: 'Beer', weight: '12x12 oz',     imageUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'] },
-  { id: 'b3',  name: 'Stout Can',  price: 3.99,  category: 'Beer', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'] },
+  { id: 'b1',  name: 'Craft IPA 6-Pack',     price: 12.99, category: 'Beer', weight: '6x12 oz',     imageUrl: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'], stock: 25 },
+  { id: 'b2',  name: 'Lager 12-Pack',      price: 15.49,  category: 'Beer', weight: '12x12 oz',     imageUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'], stock: 30 },
+  { id: 'b3',  name: 'Stout Can',  price: 3.99,  category: 'Beer', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-beer', tags: ['beer','alcohol'], stock: 40 },
 
   // Floral
-  { id: 'f1',  name: 'Rose Bouquet',     price: 14.99, category: 'Floral', weight: '1 Bouquet',     imageUrl: 'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'] },
-  { id: 'f2',  name: 'Sunflower Bunch',      price: 9.49,  category: 'Floral', weight: '1 Bunch',     imageUrl: 'https://images.unsplash.com/photo-1551731956-3e70472e80d4?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'] },
-  { id: 'f3',  name: 'Mixed Tulips',  price: 12.99,  category: 'Floral', weight: '1 Bouquet',     imageUrl: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'] },
+  { id: 'f1',  name: 'Rose Bouquet',     price: 14.99, category: 'Floral', weight: '1 Bouquet',     imageUrl: 'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'], stock: 5 },
+  { id: 'f2',  name: 'Sunflower Bunch',      price: 9.49,  category: 'Floral', weight: '1 Bunch',     imageUrl: 'https://images.unsplash.com/photo-1551731956-3e70472e80d4?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'], stock: 7 },
+  { id: 'f3',  name: 'Mixed Tulips',  price: 12.99,  category: 'Floral', weight: '1 Bouquet',     imageUrl: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-floral', tags: ['flowers','gift'], stock: 4 },
 
   // Whole Body
-  { id: 'wb1',  name: 'Lavender Soap',     price: 4.99, category: 'Whole Body', weight: '1 Bar',     imageUrl: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['soap','beauty'] },
-  { id: 'wb2',  name: 'Coconut Shampoo',      price: 8.49,  category: 'Whole Body', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['shampoo','beauty'] },
-  { id: 'wb3',  name: 'Body Lotion',  price: 9.99,  category: 'Whole Body', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['lotion','beauty'] },
+  { id: 'wb1',  name: 'Lavender Soap',     price: 4.99, category: 'Whole Body', weight: '1 Bar',     imageUrl: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['soap','beauty'], stock: 25 },
+  { id: 'wb2',  name: 'Coconut Shampoo',      price: 8.49,  category: 'Whole Body', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['shampoo','beauty'], stock: 18 },
+  { id: 'wb3',  name: 'Body Lotion',  price: 9.99,  category: 'Whole Body', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-wholebody', tags: ['lotion','beauty'], stock: 20 },
 
   // Bulk Ingredients
-  { id: 'bi1',  name: 'Quinoa (2lb)',     price: 7.99, category: 'Bulk Ingredients', weight: '2 lb',     imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['grains','healthy'] },
-  { id: 'bi2',  name: 'Rolled Oats',      price: 4.49,  category: 'Bulk Ingredients', weight: '1.5 lb',     imageUrl: 'https://images.unsplash.com/photo-1614961233913-a5113e3d6b48?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['grains','breakfast'] },
-  { id: 'bi3',  name: 'Almonds (1lb)',  price: 8.99,  category: 'Bulk Ingredients', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['nuts','healthy'] },
+  { id: 'bi1',  name: 'Quinoa (2lb)',     price: 7.99, category: 'Bulk Ingredients', weight: '2 lb',     imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['grains','healthy'], stock: 15 },
+  { id: 'bi2',  name: 'Rolled Oats',      price: 4.49,  category: 'Bulk Ingredients', weight: '1.5 lb',     imageUrl: 'https://images.unsplash.com/photo-1614961233913-a5113e3d6b48?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['grains','breakfast'], stock: 22 },
+  { id: 'bi3',  name: 'Almonds (1lb)',  price: 8.99,  category: 'Bulk Ingredients', weight: '1 lb',     imageUrl: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-bulk', tags: ['nuts','healthy'], stock: 10 },
 
   // Frozen Foods
-  { id: 'ff1',  name: 'Frozen Pizza',     price: 6.99, category: 'Frozen Foods', weight: '1 Pizza',     imageUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['pizza','frozen'] },
-  { id: 'ff2',  name: 'Ice Cream Tub',      price: 5.49,  category: 'Frozen Foods', weight: '1 Pint',     imageUrl: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['dessert','frozen'] },
-  { id: 'ff3',  name: 'Veggie Stir Fry',  price: 4.99,  category: 'Frozen Foods', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['vegetables','frozen'] },
+  { id: 'ff1',  name: 'Frozen Pizza',     price: 6.99, category: 'Frozen Foods', weight: '1 Pizza',     imageUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['pizza','frozen'], stock: 12 },
+  { id: 'ff2',  name: 'Ice Cream Tub',      price: 5.49,  category: 'Frozen Foods', weight: '1 Pint',     imageUrl: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['dessert','frozen'], stock: 15 },
+  { id: 'ff3',  name: 'Veggie Stir Fry',  price: 4.99,  category: 'Frozen Foods', weight: '16 oz',     imageUrl: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-frozen', tags: ['vegetables','frozen'], stock: 20 },
 
   // Coffee
-  { id: 'cf1',  name: 'Ethiopian Blend',     price: 12.99, category: 'Coffee', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['coffee','beans'] },
-  { id: 'cf2',  name: 'French Roast',      price: 11.49,  category: 'Coffee', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['coffee','beans'] },
-  { id: 'cf3',  name: 'Matcha Powder',  price: 14.99,  category: 'Coffee', weight: '4 oz',     imageUrl: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['tea','powder'] },
+  { id: 'cf1',  name: 'Ethiopian Blend',     price: 12.99, category: 'Coffee', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['coffee','beans'], stock: 18 },
+  { id: 'cf2',  name: 'French Roast',      price: 11.49,  category: 'Coffee', weight: '12 oz',     imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['coffee','beans'], stock: 22 },
+  { id: 'cf3',  name: 'Matcha Powder',  price: 14.99,  category: 'Coffee', weight: '4 oz',     imageUrl: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-coffee', tags: ['tea','powder'], stock: 10 },
 
   // Prepared Fare
-  { id: 'pf1',  name: 'Caesar Salad Bowl',     price: 8.99, category: 'Prepared Fare', weight: '1 Bowl',     imageUrl: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['salad','lunch'] },
-  { id: 'pf2',  name: 'Sushi Platter',      price: 14.49,  category: 'Prepared Fare', weight: '1 Platter',     imageUrl: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['sushi','lunch'] },
-  { id: 'pf3',  name: 'Margherita Slice',  price: 3.99,  category: 'Prepared Fare', weight: '1 Slice',     imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['pizza','lunch'] },
+  { id: 'pf1',  name: 'Caesar Salad Bowl',     price: 8.99, category: 'Prepared Fare', weight: '1 Bowl',     imageUrl: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['salad','lunch'], stock: 8 },
+  { id: 'pf2',  name: 'Sushi Platter',      price: 14.49,  category: 'Prepared Fare', weight: '1 Platter',     imageUrl: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['sushi','lunch'], stock: 4 },
+  { id: 'pf3',  name: 'Margherita Slice',  price: 3.99,  category: 'Prepared Fare', weight: '1 Slice',     imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=400', aisleId: 'aisle-prepared', tags: ['pizza','lunch'], stock: 12 },
 ];

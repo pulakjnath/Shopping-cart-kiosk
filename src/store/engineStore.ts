@@ -1,6 +1,11 @@
 import { create } from 'zustand';
-import { aisles } from '@/lib/mockData';
+import { aisles, mockProducts } from '@/lib/mockData';
 import { Product } from '@/lib/mockData';
+
+const initialStockMap = mockProducts.reduce((acc, p) => {
+  acc[p.id] = p.stock;
+  return acc;
+}, {} as Record<string, number>);
 
 export type KioskState = 'LANDING' | 'IDLE' | 'NAVIGATING' | 'VERIFICATION' | 'GUARD_PASS' | 'CASH_CHECKOUT';
 
@@ -17,6 +22,7 @@ interface EngineState {
   lastAddedProduct: Product | null;
   recommendationsDismissed: boolean;
   activeCategory: string;
+  stockMap: Record<string, number>;
 
   // Navigation direction state
   navigatingTo: string | null;
@@ -46,6 +52,7 @@ export const useEngineStore = create<EngineState>((set, get) => ({
   lastAddedProduct: null,
   recommendationsDismissed: false,
   activeCategory: 'All',
+  stockMap: { ...initialStockMap },
 
   // Navigation direction state
   navigatingTo: null,
@@ -107,6 +114,10 @@ export const useEngineStore = create<EngineState>((set, get) => ({
       kioskState: get().kioskState === 'CASH_CHECKOUT' ? 'CASH_CHECKOUT' : 'NAVIGATING',
       // Only update recs when genuinely new product added
       ...(isNewItem && { lastAddedProduct: product, recommendationsDismissed: false }),
+      stockMap: {
+        ...get().stockMap,
+        [product.id]: get().stockMap[product.id] - quantityDelta
+      }
     });
   },
 
@@ -128,5 +139,6 @@ export const useEngineStore = create<EngineState>((set, get) => ({
     navigatingTo: null,
     navigationOrigin: null,
     isPathVisible: false,
+    stockMap: { ...initialStockMap },
   })
 }));
